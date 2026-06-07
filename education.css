@@ -1,0 +1,367 @@
+/* ================================
+   EDUCATION PAGE — BLACK & PURPLE THEME
+   ================================ */
+
+:root {
+  --purple: #9b5de5;
+  --purple-light: #bf8aff;
+  --purple-border: rgba(155, 93, 229, 0.25);
+  --bg-base: #06060a;
+  --bg-card: #0d0d14;
+  --bg-card2: #111118;
+  --border: #1a1428;
+  --text: #f0eeff;
+  --muted: #6b6080;
+}
+
+/* ---- HERO ---- */
+.edu-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.edu-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('photo1.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.35) saturate(0.5);
+  animation: slowzoom 14s ease-in-out infinite alternate;
+}
+
+@keyframes slowzoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.edu-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(6,6,10,0.96) 0%,
+    rgba(20,8,45,0.65) 55%,
+    rgba(6,6,10,0.10) 100%
+  );
+}
+
+.edu-hero-overlay::after {
+  content: '';
+  position: absolute;
+  top: 30%; left: 0;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(155,93,229,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.edu-hero-fade {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 140px;
+  background: linear-gradient(to top, var(--bg-base), transparent);
+  z-index: 2;
+}
+
+.edu-hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 70px;
+}
+
+.edu-eyebrow {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--purple-light);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.edu-hero-content h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 90px;
+  font-weight: normal;
+  color: var(--text);
+  letter-spacing: 4px;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.edu-hero-content h1 .highlight {
+  color: var(--purple);
+  text-shadow: 0 0 60px rgba(155,93,229,0.45);
+  display: block;
+}
+
+/* ---- INTRO ---- */
+.edu-intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 40px 60px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.edu-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.edu-intro h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  font-weight: normal;
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.edu-intro h2 .highlight { color: var(--purple); }
+
+.edu-intro-line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(to right, var(--purple), var(--purple-light));
+  margin: 0 auto 28px;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(155,93,229,0.5);
+}
+
+.edu-intro p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.95;
+}
+
+/* ---- TIMELINE WRAPPER ---- */
+.edu-timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+}
+
+/* Glowing centre spine */
+.edu-spine {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--purple-border) 10%,
+    var(--purple-border) 90%,
+    transparent 100%
+  );
+}
+
+/* Each timeline row */
+.edu-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  margin-bottom: 110px;
+  position: relative;
+}
+
+.edu-item:last-child { margin-bottom: 0; }
+
+/* Text side */
+.edu-text { padding-right: 60px; }
+
+/* Visual side */
+.edu-visual { padding-left: 60px; }
+
+/* Flipped layout */
+.edu-item.flip .edu-text  { order: 3; padding-right: 0; padding-left: 60px; }
+.edu-item.flip .edu-dot-col { order: 2; }
+.edu-item.flip .edu-visual { order: 1; padding-left: 0; padding-right: 60px; }
+
+/* Giant year number */
+.edu-year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  font-weight: normal;
+  color: var(--purple);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: 3px;
+  text-shadow: 0 0 40px rgba(155,93,229,0.35);
+}
+
+.edu-year-range {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.edu-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  color: var(--text);
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.edu-badge {
+  display: inline-block;
+  background: rgba(155,93,229,0.08);
+  border: 1px solid var(--purple-border);
+  color: var(--purple-light);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.edu-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.95;
+}
+
+.edu-desc strong { color: var(--text); font-weight: 500; }
+
+/* Dot column */
+.edu-dot-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.edu-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--purple);
+  border: 3px solid var(--bg-base);
+  box-shadow: 0 0 16px rgba(155,93,229,0.7), 0 0 40px rgba(155,93,229,0.2);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.edu-item:hover .edu-dot { transform: scale(1.3); }
+
+/* Image box */
+.edu-img-box {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--purple-border);
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.edu-img-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(155,93,229,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.edu-img-box:hover {
+  border-color: var(--purple);
+  box-shadow: 0 0 40px rgba(155,93,229,0.18);
+}
+
+.edu-img-box img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.4s, transform 0.5s;
+}
+
+.edu-img-box:hover img { filter: grayscale(0%); transform: scale(1.04); }
+
+.edu-placeholder {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px;
+  width: 100%; height: 100%;
+  text-align: center;
+}
+
+.edu-placeholder span { font-size: 50px; }
+
+.edu-placeholder p {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 40px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- MUSIC PLAYER ---- */
+.music-player {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(6,6,10,0.95);
+  border: 1px solid rgba(155,93,229,0.35);
+  padding: 12px 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  backdrop-filter: blur(12px);
+}
+
+.music-player span { color: var(--purple); }
+
+.music-player button {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.music-player button:hover { background: var(--purple-light); }

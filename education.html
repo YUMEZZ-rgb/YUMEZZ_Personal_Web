@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YUMEZZ - Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transitions.css">
+  <link rel="stylesheet" href="education.css">
+  <style>
+    body { background: #06060a; font-family: "DM Sans", Arial, sans-serif; color: #f0eeff; }
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(6,6,10,0.92) 0%, transparent 100%);
+      transition: background 0.3s, padding 0.3s;
+    }
+    .nav.scrolled { background: rgba(6,6,10,0.98); padding: 16px 48px; }
+    .nav-logo { font-family: "Bebas Neue", sans-serif; font-size: 26px; letter-spacing: 4px; color: #9b5de5; text-decoration: none; }
+    .nav-logo img { height: 34px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: #f0eeff; text-decoration: none; font-size: 11px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: #9b5de5; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.png" alt="YUMEZZ" onerror="this.style.display='none'; this.nextSibling.style.display='inline'">
+      <span style="display:none">YUMEZZ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="education.html" class="active">Education</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="edu-hero">
+    <div class="edu-hero-bg"></div>
+    <div class="edu-hero-overlay"></div>
+    <div class="edu-hero-content">
+      <p class="edu-eyebrow">— ACADEMIC JOURNEY —</p>
+      <h1>My<span class="highlight">Education</span></h1>
+    </div>
+    <div class="edu-hero-fade"></div>
+  </div>
+
+  <!-- Intro -->
+  <div class="edu-intro slide-up">
+    <p class="edu-label">MY STORY</p>
+    <h2>A History of <span class="highlight">Learning & Growth</span></h2>
+    <div class="edu-intro-line"></div>
+    <p>Education is more than just classrooms and textbooks — it is the story of growth, curiosity, and discovery. My journey began in the halls of a primary school in Johor Bahru and now continues at one of Malaysia's most respected universities.</p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="edu-timeline">
+    <div class="edu-spine"></div>
+
+    <!-- Item 1 -->
+    <div class="edu-item slide-left">
+      <div class="edu-text">
+        <div class="edu-year">2013</div>
+        <p class="edu-year-range">2013 — 2018</p>
+        <h3 class="edu-name">SK Permas Jaya 5</h3>
+        <span class="edu-badge">🏫 Primary School</span>
+        <p class="edu-desc">My earliest years of formal learning. Here I developed the <strong>curiosity and work ethic</strong> that would carry me through every stage of education. A place where friendships were built and the love of learning was first ignited.</p>
+      </div>
+      <div class="edu-dot-col">
+        <div class="edu-dot"></div>
+      </div>
+      <div class="edu-visual">
+        <div class="edu-img-box">
+          <img src="image/skpj5.png" alt="SK Permas Jaya 5"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="edu-placeholder" style="display:none">
+            <span>🏫</span>
+            <p>SK Permas Jaya 5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 2 flipped -->
+    <div class="edu-item flip slide-right">
+      <div class="edu-visual">
+        <div class="edu-img-box">
+          <img src="image/smkdpt.png" alt="SMK Dato Penggawa Timur"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="edu-placeholder" style="display:none">
+            <span>🏫</span>
+            <p>SMK Dato Penggawa Timur</p>
+          </div>
+        </div>
+      </div>
+      <div class="edu-dot-col">
+        <div class="edu-dot"></div>
+      </div>
+      <div class="edu-text">
+        <div class="edu-year">2019</div>
+        <p class="edu-year-range">2019 — 2023</p>
+        <h3 class="edu-name">SMK Dato Penggawa Timur</h3>
+        <span class="edu-badge">🏫 Secondary School</span>
+        <p class="edu-desc">Five transformative years of secondary education in Johor. I grew not just academically but as an individual — navigating challenges, discovering a passion for <strong>music and creativity</strong>, and earning the qualifications needed to step into higher education.</p>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="edu-item">
+      <div class="edu-text">
+        <div class="edu-year">2024</div>
+        <p class="edu-year-range">2024 — 2027</p>
+        <h3 class="edu-name">Universiti Teknologi Mara</h3>
+        <span class="edu-badge">🎓 University · Merbok, Kedah</span>
+        <p class="edu-desc">Currently pursuing my degree at <strong>UiTM Merbok</strong> — one of Malaysia's largest and most prestigious universities. This chapter is about pushing limits, building professional skills, and shaping the person I am becoming. The best is still ahead.</p>
+      </div>
+      <div class="edu-dot-col">
+        <div class="edu-dot"></div>
+      </div>
+      <div class="edu-visual">
+        <div class="edu-img-box">
+          <img src="image/uitm.png" alt="Universiti Teknologi Mara"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="edu-placeholder" style="display:none">
+            <span>🎓</span>
+            <p>UiTM Merbok, Kedah</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2026 YUMEZZ (AKA ALIFF) — Made with ❤️</p>
+  </div>
+
+  <!-- Music Player -->
+<div class="music-player">
+  <span></span>
+  <audio id="myMusic" loop autoplay>
+    <source src="music/music.mp3" type="audio/mpeg">
+  </audio>
+  <button onclick="playPause()">⏸ Pause</button>
+</div>
+
+
+
+  <script>
+    // ---- SCROLL TRANSITION OBSERVER ----
+    function initObserver() {
+      var elements = document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in, .zoom-in');
+      
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      elements.forEach(function(el) {
+        observer.observe(el);
+      });
+    }
+
+    // Small delay so CSS has time to set opacity:0 first
+    setTimeout(initObserver, 100);
+
+    // ---- PAGE TRANSITION ON CLICK ----
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('javascript')) {
+          e.preventDefault();
+          document.body.classList.add('page-transition-out');
+          setTimeout(function() { window.location.href = href; }, 280);
+        }
+      });
+    });
+  </script>
+  <script>
+    var nav = document.getElementById("nav");
+    window.addEventListener("scroll", function() {
+      nav.classList.toggle("scrolled", window.scrollY > 60);
+    });
+  </script>
+
+  <script>
+    // ── PERSISTENT MUSIC — continues across page navigation ──
+    (function() {
+      var music = document.getElementById('myMusic');
+      var btn   = document.querySelector('.music-player button');
+
+      // Restore saved playback position
+      var saved = parseFloat(localStorage.getItem('musicTime') || '0');
+      var wasPaused = localStorage.getItem('musicPaused') === 'true';
+
+      music.currentTime = saved;
+
+      if (!wasPaused) {
+        music.play().then(function() {
+          btn.textContent = '⏸ Pause';
+        }).catch(function() {
+          btn.textContent = '▶ Play';
+        });
+      } else {
+        btn.textContent = '▶ Play';
+      }
+
+      // Save position every second
+      setInterval(function() {
+        if (!music.paused) {
+          localStorage.setItem('musicTime', music.currentTime);
+        }
+      }, 1000);
+
+      // Save position right before leaving the page
+      window.addEventListener('beforeunload', function() {
+        localStorage.setItem('musicTime', music.currentTime);
+        localStorage.setItem('musicPaused', music.paused ? 'true' : 'false');
+      });
+
+      // Global toggle function
+      window.playPause = function() {
+        if (music.paused) {
+          music.play();
+          btn.textContent = '⏸ Pause';
+          localStorage.setItem('musicPaused', 'false');
+        } else {
+          music.pause();
+          btn.textContent = '▶ Play';
+          localStorage.setItem('musicPaused', 'true');
+        }
+      };
+    })();
+  </script>
+</body>
+</html>
