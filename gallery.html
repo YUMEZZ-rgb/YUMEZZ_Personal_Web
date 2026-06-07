@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>YUMEZZ — Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transitions.css">
+  <link rel="stylesheet" href="gallery.css">
+
+  <style>
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(6,6,10,0.92) 0%, transparent 100%);
+      transition: background 0.3s, padding 0.3s;
+    }
+    .nav.scrolled { background: rgba(6,6,10,0.98); padding: 16px 48px; }
+    .nav-logo { font-family: "Bebas Neue", sans-serif; font-size: 26px; letter-spacing: 4px; color: #9b5de5; text-decoration: none; }
+    .nav-logo img { height: 34px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: #f0eeff; text-decoration: none; font-size: 11px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: #9b5de5; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.png" alt="YUMEZZ" onerror="this.style.display='none'; this.nextSibling.style.display='inline'">
+      <span style="display:none">YUMEZZ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- FULL-BLEED HERO -->
+  <section class="gal-hero">
+    <div class="gal-hero-bg"></div>
+    <div class="gal-hero-overlay"></div>
+    <div class="gal-hero-content">
+      <span class="gal-eyebrow">— My Memories —</span>
+      <h1 class="gal-hero-title">
+        My
+        <span>Gallery</span>
+      </h1>
+      <p class="gal-hero-sub">A curated collection of moments I love 📸</p>
+      <div class="gal-hero-count">14 works in this collection</div>
+    </div>
+    <div class="gal-hero-scroll">
+      <div class="gal-hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- COLLECTION GRID -->
+  <section class="gal-collection">
+
+    <div class="gal-section-head">
+      <div>
+        <p class="gal-section-label">— Collection —</p>
+        <h2 class="gal-section-title">Moments &amp; <em>Memories</em></h2>
+      </div>
+      <span class="gal-item-count">14 items</span>
+    </div>
+
+    <!-- GRID ROW 1 -->
+    <div class="gal-grid">
+
+      <div class="gal-item wide" data-title="My Favourite Moment" data-sub="Portrait · 2025">
+        <img src="images/bowling2.png" alt="My Favourite Moment">
+        <span class="gal-num">01</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">My Favourite Moment</div>
+          <div class="gal-caption-sub">Portrait · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Chilling Out" data-sub="Lifestyle · 2025">
+        <img src="images/me&ipan.png" alt="Chilling Out">
+        <span class="gal-num">02</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Chilling Out</div>
+          <div class="gal-caption-sub">Lifestyle · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Good Vibes" data-sub="Daily · 2025">
+        <img src="images/impulse2.png" alt="Good Vibes">
+        <span class="gal-num">03</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Good Vibes</div>
+          <div class="gal-caption-sub">Daily · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item wide" data-title="Beautiful View" data-sub="Places · 2025">
+        <img src="images/jjj.png" alt="Beautiful View">
+        <span class="gal-num">04</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Beautiful View</div>
+          <div class="gal-caption-sub">Places · 2025</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="gal-divider">
+      <div class="gal-divider-line"></div>
+      <span class="gal-divider-icon">✦</span>
+      <div class="gal-divider-line"></div>
+    </div>
+
+    <!-- GRID ROW 2 -->
+    <div class="gal-grid">
+
+      <div class="gal-item wide" data-title="My Place" data-sub="Places · 2025">
+        <img src="images/bukitH2.png" alt="My Place">
+        <span class="gal-num">05</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">My Place</div>
+          <div class="gal-caption-sub">Places · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Everyday Life" data-sub="Daily · 2025">
+        <img src="images/freedom.png" alt="Everyday Life">
+        <span class="gal-num">06</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Everyday Life</div>
+          <div class="gal-caption-sub">Daily · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="My Gunpla Build" data-sub="Hobbies · 2025">
+        <img src="images/freedom2.png" alt="My Gunpla Build">
+        <span class="gal-num">07</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">My Gunpla Build</div>
+          <div class="gal-caption-sub">Hobbies · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item tall" data-title="Squad Goals" data-sub="Friends · 2025">
+        <img src="images/kita.png" alt="Squad Goals">
+        <span class="gal-num">08</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Squad Goals</div>
+          <div class="gal-caption-sub">Friends · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Class Memories" data-sub="University · 2025">
+        <img src="images/1444B.png" alt="Class Memories">
+        <span class="gal-num">09</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Class Memories</div>
+          <div class="gal-caption-sub">University · 2025</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div class="gal-divider">
+      <div class="gal-divider-line"></div>
+      <span class="gal-divider-icon">✦</span>
+      <div class="gal-divider-line"></div>
+    </div>
+
+    <!-- GRID ROW 3 — Video + Portraits -->
+    <div class="gal-grid">
+
+      <div class="gal-item video-item full">
+        <video controls preload="metadata" playsinline>
+          <source src="video/mlbb.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="gal-caption">
+          <div class="gal-caption-title">With Online Bestie ✨</div>
+          <div class="gal-caption-sub">Video · MLBB · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="MLBB Ranked" data-sub="Gaming · 2025">
+        <img src="images/mlbb2.png" alt="MLBB Ranked">
+        <span class="gal-num">10</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">MLBB Ranked</div>
+          <div class="gal-caption-sub">Gaming · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item wide" data-title="Victory Screen" data-sub="Gaming · 2025">
+        <img src="images/mlbb3.png" alt="Victory Screen">
+        <span class="gal-num">11</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Victory Screen</div>
+          <div class="gal-caption-sub">Gaming · 2025</div>
+        </div>
+      </div>
+
+
+    <!-- DIVIDER -->
+    <div class="gal-divider">
+      <div class="gal-divider-line"></div>
+      <span class="gal-divider-icon">✦</span>
+      <div class="gal-divider-line"></div>
+    </div>
+
+    <!-- GRID ROW 4 — New Memories (4-col single row) -->
+    <div class="gal-grid gal-grid-4">
+
+      <div class="gal-item" data-title="Strike Time!" data-sub="Bowling · 2025">
+        <img src="images/bowling3.png" alt="Strike Time!">
+        <span class="gal-num">12</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Strike Time!</div>
+          <div class="gal-caption-sub">Bowling · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Karaoke Night" data-sub="Friends · 2025">
+        <img src="images/karaoke.png" alt="Karaoke Night">
+        <span class="gal-num">13</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Karaoke Night</div>
+          <div class="gal-caption-sub">Friends · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Reunite & Makan" data-sub="Friends · 2025">
+        <img src="images/reunite.png" alt="Reunite & Makan">
+        <span class="gal-num">14</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Reunite & Makan</div>
+          <div class="gal-caption-sub">Friends · 2025</div>
+        </div>
+      </div>
+
+      <div class="gal-item" data-title="Rainy Day Thoughts" data-sub="Moody · 2025">
+        <img src="images/m2.png" alt="Rainy Day Thoughts">
+        <span class="gal-num">15</span>
+        <div class="gal-caption">
+          <div class="gal-caption-title">Rainy Day Thoughts</div>
+          <div class="gal-caption-sub">Moody · 2025</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer fade-in">
+    <p>© 2026 YUMEZZ (AKA ALIFF) — Made with ❤️</p>
+  </div>
+
+  <!-- MUSIC PLAYER -->
+  <div class="music-player">
+    <span>🎵</span> ANANTA OST
+    <audio id="myMusic" loop autoplay>
+      <source src="music/music.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="playPause()">⏸ Pause</button>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="gal-lightbox">
+    <span id="gal-close">✕ Close</span>
+    <span class="gal-lb-nav gal-lb-prev" id="gal-prev">&#8592;</span>
+    <span class="gal-lb-nav gal-lb-next" id="gal-next">&#8594;</span>
+    <img id="gal-lb-img" src="" alt="Full Photo">
+    <div class="gal-lb-caption">
+      <span class="gal-lb-caption-title" id="gal-lb-title"></span>
+      <span class="gal-lb-caption-sub"   id="gal-lb-sub"></span>
+    </div>
+    <p class="gal-lb-hint">ESC or click backdrop to close · ← → to navigate</p>
+  </div>
+
+  <script>
+    // ── NAV SCROLL ──
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+
+
+    // ── LIGHTBOX with prev/next ──
+    var lightbox  = document.getElementById('gal-lightbox');
+    var lbImg     = document.getElementById('gal-lb-img');
+    var lbTitle   = document.getElementById('gal-lb-title');
+    var lbSub     = document.getElementById('gal-lb-sub');
+    var imgItems  = [];
+    var currentIdx = 0;
+
+    // Collect all clickable image items
+    document.querySelectorAll('.gal-item:not(.video-item)').forEach(function(item) {
+      var img = item.querySelector('img');
+      if (!img) return;
+      imgItems.push({
+        src: img.src,
+        title: item.dataset.title || '',
+        sub: item.dataset.sub || ''
+      });
+      var idx = imgItems.length - 1;
+      item.addEventListener('click', function() { openLB(idx); });
+    });
+
+    function openLB(idx) {
+      currentIdx = idx;
+      var d = imgItems[idx];
+      lbImg.src = d.src;
+      lbTitle.textContent = d.title;
+      lbSub.textContent = d.sub;
+      lightbox.classList.add('open');
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLB() {
+      lightbox.style.display = 'none';
+      lightbox.classList.remove('open');
+    }
+
+    document.getElementById('gal-close').addEventListener('click', function(e) { e.stopPropagation(); closeLB(); });
+
+    document.getElementById('gal-prev').addEventListener('click', function(e) {
+      e.stopPropagation();
+      currentIdx = (currentIdx - 1 + imgItems.length) % imgItems.length;
+      openLB(currentIdx);
+    });
+
+    document.getElementById('gal-next').addEventListener('click', function(e) {
+      e.stopPropagation();
+      currentIdx = (currentIdx + 1) % imgItems.length;
+      openLB(currentIdx);
+    });
+
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLB(); });
+    lbImg.addEventListener('click', function(e) { e.stopPropagation(); });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowLeft')  { currentIdx = (currentIdx - 1 + imgItems.length) % imgItems.length; openLB(currentIdx); }
+      if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % imgItems.length; openLB(currentIdx); }
+    });
+
+    // ── SCROLL OBSERVER ──
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in, .zoom-in').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // ── PAGE TRANSITION ──
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel')) {
+          e.preventDefault();
+          document.body.style.opacity = '0';
+          document.body.style.transition = 'opacity 0.25s';
+          setTimeout(function() { window.location.href = href; }, 260);
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // ── PERSISTENT MUSIC — continues across page navigation ──
+    (function() {
+      var music = document.getElementById('myMusic');
+      var btn   = document.querySelector('.music-player button');
+
+      // Restore saved playback position
+      var saved = parseFloat(localStorage.getItem('musicTime') || '0');
+      var wasPaused = localStorage.getItem('musicPaused') === 'true';
+
+      music.currentTime = saved;
+
+      if (!wasPaused) {
+        music.play().then(function() {
+          btn.textContent = '⏸ Pause';
+        }).catch(function() {
+          btn.textContent = '▶ Play';
+        });
+      } else {
+        btn.textContent = '▶ Play';
+      }
+
+      // Save position every second
+      setInterval(function() {
+        if (!music.paused) {
+          localStorage.setItem('musicTime', music.currentTime);
+        }
+      }, 1000);
+
+      // Save position right before leaving the page
+      window.addEventListener('beforeunload', function() {
+        localStorage.setItem('musicTime', music.currentTime);
+        localStorage.setItem('musicPaused', music.paused ? 'true' : 'false');
+      });
+
+      // Global toggle function
+      window.playPause = function() {
+        if (music.paused) {
+          music.play();
+          btn.textContent = '⏸ Pause';
+          localStorage.setItem('musicPaused', 'false');
+        } else {
+          music.pause();
+          btn.textContent = '▶ Play';
+          localStorage.setItem('musicPaused', 'true');
+        }
+      };
+    })();
+  </script>
+</body>
+</html>
