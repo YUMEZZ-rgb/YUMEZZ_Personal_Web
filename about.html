@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YUMEZZ - About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transitions.css">
+  <link rel="stylesheet" href="about.css">
+  <style>
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(6,6,10,0.92) 0%, transparent 100%);
+      transition: background 0.3s, padding 0.3s;
+    }
+    .nav.scrolled { background: rgba(6,6,10,0.98); padding: 16px 48px; }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 4px;
+      color: #9b5de5;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 34px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: #f0eeff;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { opacity: 1; color: #9b5de5; }
+  </style>
+</head>
+<body class="hotel-body">
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.png" alt="YUMEZZ" onerror="this.style.display='none'; this.nextSibling.style.display='inline'">
+      <span style="display:none">YUMEZZ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <div class="hotel-hero">
+    <div class="hotel-hero-bg"></div>
+    <div class="hotel-hero-overlay"></div>
+    <div class="hotel-hero-content">
+      <p class="hotel-eyebrow">— Welcome —</p>
+      <h1 class="hotel-hero-title">About Me</h1>
+      <p class="hotel-hero-sub">Get to know the person behind the website</p>
+    </div>
+    <div class="hotel-hero-fade"></div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="hotel-divider"><span>✦</span></div>
+
+  <!-- INTRO SECTION — Nouveau Split Layout -->
+  <div class="intro-split slide-left">
+
+    <!-- LEFT: Full-bleed photo panel -->
+    <div class="intro-photo-panel">
+      <img src="images/bowling.png" alt="Aliff">
+      <div class="intro-photo-tag">
+        <span class="intro-photo-tag-line"></span>
+        <span>Aliff · Yumezz</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Scrollable text card -->
+    <div class="intro-text-panel">
+
+      <!-- Top label row -->
+      <div class="intro-label-row">
+        <span class="intro-badge">WHO AM I</span>
+        <span class="intro-year">2025</span>
+      </div>
+
+      <h2 class="intro-name">Muhammad Aliff<br><em>bin Md Khairani</em></h2>
+      <div class="intro-rule"></div>
+
+      <div class="intro-body">
+        <p>My name is <strong>Muhammad Aliff bin Md Khairani</strong>, but most people know me by my nickname, <strong>Yumezz</strong>. I am 20 years old and was born at Hospital Sultanah Aminah, Johor Bahru. I am currently pursuing a <strong>Diploma in Library Management</strong> at Universiti Teknologi MARA (UiTM) Merbok, Kedah. Through my studies, I have gained knowledge and skills in information management, library services, cataloging, and digital resources.</p>
+        <div class="intro-divider-thin"></div>
+        <p>I come from a small and loving family. My father's name is <strong>Md Khairani bin Majid</strong>, and my mother's name is <strong>Norizan binti Md Yusuf</strong>. As the only child in the family, I have learned to be independent, responsible, and self-motivated from a young age.</p>
+        <div class="intro-divider-thin"></div>
+        <p>I currently live in <strong>Masai, Johor</strong> — a place I call home where I spend most of my time relaxing and enjoying my hobbies such as building Gundam. Apart from that, I also enjoy listening to music during my free time. Music helps me relax, clear my mind, and create a positive atmosphere, especially after a busy day of studying.</p>
+        <div class="intro-divider-thin"></div>
+        <p>As a student and lifelong learner, I am always eager to gain new knowledge, improve my skills, and explore new opportunities. This website serves as a platform to share my background, interests, experiences, and achievements while documenting my journey toward a successful future.</p>
+      </div>
+
+      <!-- Bottom meta row -->
+      <div class="intro-meta-row">
+        <div class="intro-meta-item">
+          <span class="intro-meta-val">20</span>
+          <span class="intro-meta-key">Years Old</span>
+        </div>
+        <div class="intro-meta-item">
+          <span class="intro-meta-val">UiTM</span>
+          <span class="intro-meta-key">Merbok, Kedah</span>
+        </div>
+        <div class="intro-meta-item">
+          <span class="intro-meta-val">Johor</span>
+          <span class="intro-meta-key">Hometown</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="hotel-divider"><span>✦</span></div>
+
+  <!-- HIGHLIGHTS ROW -->
+  <div class="hotel-highlights slide-up">
+    <div class="hotel-highlight-item">
+      <div class="hh-icon">🤖</div>
+      <h3>Gundam Lover</h3>
+      <p>I enjoy building and customizing Gunpla kits with patience and care.</p>
+    </div>
+    <div class="hotel-highlight-item">
+      <div class="hh-icon">🎵</div>
+      <h3>Music Fan</h3>
+      <p>Music is always playing in the background wherever I go.</p>
+    </div>
+    <div class="hotel-highlight-item">
+      <div class="hh-icon">🍛</div>
+      <h3>Food Explorer</h3>
+      <p>Always on the hunt for the perfect Nasi Ayam Butter.</p>
+    </div>
+    <div class="hotel-highlight-item">
+      <div class="hh-icon">😊</div>
+      <h3>Simple Person</h3>
+      <p>I find joy in simple things and everyday moments.</p>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="hotel-divider"><span>✦</span></div>
+
+  <!-- FULL WIDTH QUOTE -->
+  <div class="hotel-quote">
+    <div class="hotel-quote-bg"></div>
+    <div class="hotel-quote-overlay"></div>
+    <div class="hotel-quote-text">
+      <p class="hotel-label gold-label">— MY MOTTO —</p>
+      <blockquote>"Live simply, eat well,<br>and enjoy the music."</blockquote>
+      <p class="hotel-quote-author">— Yumezz (Aliff)</p>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="hotel-divider"><span>✦</span></div>
+
+  <!-- FUN FACTS + DREAMS -->
+  <div class="hotel-two-col slide-up">
+    <div class="hotel-col">
+      <p class="hotel-label">FUN FACTS</p>
+      <h2 class="hotel-heading">Little Things<br><em>About Me</em></h2>
+      <div class="hotel-line"></div>
+      <ul class="hotel-list">
+        <li>I can eat Nasi Ayam every day and never get bored.</li>
+        <li>Coffee Pistachio is my current obsession ☕🥜</li>
+        <li>I always have music playing in the background.</li>
+        <li>Building Gunpla is my way of expressing patience and creativity 🤖</li>
+        <li>I added this website because I wanted my own space on the internet.</li>
+      </ul>
+    </div>
+    <div class="hotel-col">
+      <p class="hotel-label">I DREAM OF</p>
+      <h2 class="hotel-heading">My Hopes &<br><em>Aspirations</em></h2>
+      <div class="hotel-line"></div>
+      <ul class="hotel-list">
+        <li>Travelling and trying food from all over the world.</li>
+        <li>Living a simple, peaceful and happy life.</li>
+        <li>Being happy and making the people around me happy.</li>
+        <li>Graduating from UiTM and making my family proud 🎓</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="hotel-divider"><span>✦</span></div>
+
+  <!-- CTA SECTION -->
+  <div class="hotel-cta slide-up">
+    <p class="hotel-label">WANT TO KNOW MORE?</p>
+    <h2 class="hotel-heading">Let's <em>Connect</em></h2>
+    <div class="hotel-line" style="margin:16px auto 30px auto;"></div>
+    <div class="hotel-cta-buttons">
+      <a href="contact.html" class="hotel-btn-gold">Say Hello</a>
+      <a href="hobbies.html" class="hotel-btn-outline">My Hobbies</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2026 YUMEZZ (AKA ALIFF) — Made with ❤️</p>
+  </div>
+
+  <!-- Music Player -->
+<div class="music-player">
+  <span></span>
+  <audio id="myMusic" loop autoplay>
+    <source src="music/music.mp3" type="audio/mpeg">
+  </audio>
+  <button onclick="playPause()">⏸ Pause</button>
+</div>
+
+
+
+  <script>
+    // ---- SCROLL TRANSITION OBSERVER ----
+    function initObserver() {
+      var elements = document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in, .zoom-in');
+      
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      elements.forEach(function(el) {
+        observer.observe(el);
+      });
+    }
+
+    // Small delay so CSS has time to set opacity:0 first
+    setTimeout(initObserver, 100);
+
+    // ---- PAGE TRANSITION ON CLICK ----
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('javascript')) {
+          e.preventDefault();
+          document.body.classList.add('page-transition-out');
+          setTimeout(function() { window.location.href = href; }, 280);
+        }
+      });
+    });
+  </script>
+  <script>
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+  <script>
+    // ── PERSISTENT MUSIC — continues across page navigation ──
+    (function() {
+      var music = document.getElementById('myMusic');
+      var btn   = document.querySelector('.music-player button');
+
+      // Restore saved playback position
+      var saved = parseFloat(localStorage.getItem('musicTime') || '0');
+      var wasPaused = localStorage.getItem('musicPaused') === 'true';
+
+      music.currentTime = saved;
+
+      if (!wasPaused) {
+        music.play().then(function() {
+          btn.textContent = '⏸ Pause';
+        }).catch(function() {
+          btn.textContent = '▶ Play';
+        });
+      } else {
+        btn.textContent = '▶ Play';
+      }
+
+      // Save position every second
+      setInterval(function() {
+        if (!music.paused) {
+          localStorage.setItem('musicTime', music.currentTime);
+        }
+      }, 1000);
+
+      // Save position right before leaving the page
+      window.addEventListener('beforeunload', function() {
+        localStorage.setItem('musicTime', music.currentTime);
+        localStorage.setItem('musicPaused', music.paused ? 'true' : 'false');
+      });
+
+      // Global toggle function
+      window.playPause = function() {
+        if (music.paused) {
+          music.play();
+          btn.textContent = '⏸ Pause';
+          localStorage.setItem('musicPaused', 'false');
+        } else {
+          music.pause();
+          btn.textContent = '▶ Play';
+          localStorage.setItem('musicPaused', 'true');
+        }
+      };
+    })();
+  </script>
+</body>
+</html>
