@@ -1,0 +1,365 @@
+/* ================================
+   HOBBIES PAGE — BLACK & PURPLE THEME
+   ================================ */
+
+:root {
+  --purple: #9b5de5;
+  --purple-light: #bf8aff;
+  --purple-dim: rgba(155, 93, 229, 0.18);
+  --purple-border: rgba(155, 93, 229, 0.25);
+  --bg-base: #06060a;
+  --bg-card: #0d0d14;
+  --bg-card2: #111118;
+  --border: #1a1428;
+  --text: #f0eeff;
+  --muted: #6b6080;
+}
+
+/* ---- PAGE HERO HEADER ---- */
+.hob-header {
+  position: relative;
+  text-align: center;
+  padding: 140px 40px 80px;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* Top fade-in line */
+.hob-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--purple));
+}
+
+/* Centre radial glow */
+.hob-header::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(155,93,229,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hob-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--purple-light);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hob-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 90px;
+  font-weight: normal;
+  line-height: 0.9;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
+.hob-title .highlight {
+  color: var(--purple);
+  text-shadow: 0 0 60px rgba(155,93,229,0.4);
+  display: block;
+}
+
+/* Header bottom border */
+.hob-header-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hob-header-border span {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.hob-header-line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--purple-border));
+}
+
+.hob-header-line.right {
+  background: linear-gradient(to left, transparent, var(--purple-border));
+}
+
+/* ---- DIVIDER ---- */
+.hob-divider {
+  text-align: center;
+  padding: 24px 0;
+  color: var(--purple);
+  font-size: 16px;
+  letter-spacing: 10px;
+  text-shadow: 0 0 12px rgba(155,93,229,0.55);
+}
+
+/* ---- HOBBY GRID — full-width cinematic cards ---- */
+.hob-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  max-width: 1300px;
+  margin: 0 auto 1px;
+}
+
+.hob-item {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-base);
+  cursor: pointer;
+}
+
+/* Tall cinematic image */
+.hob-photo {
+  position: relative;
+  overflow: hidden;
+  height: 520px;
+}
+
+.hob-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.5) saturate(0.7);
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+.hob-item:hover .hob-photo img {
+  transform: scale(1.06);
+  filter: brightness(0.35) saturate(0.5);
+}
+
+/* Gradient overlay always visible */
+.hob-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(6,6,10,0.95) 0%,
+    rgba(20,8,45,0.5) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+/* Purple tint on hover */
+.hob-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center bottom, rgba(155,93,229,0.18) 0%, transparent 70%);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hob-item:hover .hob-photo::after { opacity: 1; }
+
+/* Content pinned to bottom of card */
+.hob-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  padding: 40px 32px;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+/* Index number */
+.hob-index {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--purple);
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.hob-label h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  letter-spacing: 3px;
+  color: var(--text);
+  font-weight: normal;
+  line-height: 0.95;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.hob-sub {
+  font-size: 10px;
+  color: var(--purple-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Hover description slides up */
+.hob-overlay {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, margin-top 0.4s ease;
+  margin-top: 0;
+}
+
+.hob-item:hover .hob-overlay {
+  max-height: 120px;
+  margin-top: 16px;
+}
+
+.hob-overlay p {
+  font-size: 13px;
+  color: rgba(240,238,255,0.75);
+  line-height: 1.75;
+  border-top: 1px solid var(--purple-border);
+  padding-top: 14px;
+}
+
+/* Bottom purple line per card */
+.hob-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(to right, var(--purple), var(--purple-light));
+  transition: width 0.5s ease;
+  z-index: 20;
+}
+
+.hob-item:hover::after { width: 100%; }
+
+/* Card number top-right */
+.hob-card-num {
+  position: absolute;
+  top: 24px; right: 28px;
+  z-index: 10;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  line-height: 1;
+  color: rgba(155,93,229,0.08);
+  letter-spacing: 2px;
+  transition: color 0.4s;
+  pointer-events: none;
+}
+
+.hob-item:hover .hob-card-num { color: rgba(155,93,229,0.15); }
+
+/* ---- VIDEO SECTION ---- */
+.video-section {
+  text-align: center;
+  max-width: 960px;
+  margin: 80px auto 0;
+  padding: 0 40px 80px;
+  position: relative;
+}
+
+.video-section::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px; height: 300px;
+  background: radial-gradient(ellipse, rgba(155,93,229,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.video-section .hob-eyebrow { margin-bottom: 16px; }
+
+.video-section .hob-title {
+  font-size: 52px;
+  margin-bottom: 40px;
+}
+
+.video-box {
+  border: 1px solid var(--purple-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.video-box:hover {
+  border-color: var(--purple);
+  box-shadow: 0 0 60px rgba(155,93,229,0.18);
+}
+
+.video-box video,
+.video-box iframe {
+  display: block;
+  border: none;
+  width: 100%;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 40px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- MUSIC PLAYER ---- */
+.music-player {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(6,6,10,0.95);
+  border: 1px solid rgba(155,93,229,0.35);
+  padding: 12px 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  backdrop-filter: blur(12px);
+}
+
+.music-player span { color: var(--purple); }
+
+.music-player button {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.music-player button:hover { background: var(--purple-light); }
