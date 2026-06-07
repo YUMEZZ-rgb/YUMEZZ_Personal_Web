@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YUMEZZ - Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transitions.css">
+  <link rel="stylesheet" href="contact.css">
+  <style>
+    body { background: #06060a; font-family: "DM Sans", Arial, sans-serif; color: #f0eeff; }
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(6,6,10,0.92) 0%, transparent 100%);
+      transition: background 0.3s, padding 0.3s;
+    }
+    .nav.scrolled { background: rgba(6,6,10,0.98); padding: 16px 48px; }
+    .nav-logo { font-family: "Bebas Neue", sans-serif; font-size: 26px; letter-spacing: 4px; color: #9b5de5; text-decoration: none; }
+    .nav-logo img { height: 34px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: #f0eeff; text-decoration: none; font-size: 11px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; color: #9b5de5; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.png" alt="YUMEZZ" onerror="this.style.display='none'; this.nextSibling.style.display='inline'">
+      <span style="display:none">YUMEZZ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="food.html">Food</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="con-hero">
+    <div class="con-hero-bg"></div>
+    <div class="con-hero-overlay"></div>
+    <div class="con-hero-content">
+      <p class="con-eyebrow">— DON'T BE SHY —</p>
+      <h1>Say<span class="highlight">Hello 👋</span></h1>
+      <p class="con-hero-sub">I'd love to hear from you!</p>
+    </div>
+    <div class="con-hero-fade"></div>
+  </div>
+
+  <!-- Main Contact Area -->
+  <div class="con-wrapper slide-up">
+
+    <!-- Left — Info Cards -->
+    <div class="con-left slide-left">
+      <p class="con-label">REACH ME AT</p>
+      <h2 class="con-heading">Let's <span class="highlight">Connect</span></h2>
+      <div class="con-line"></div>
+      <p class="con-desc">Feel free to reach out anytime. Whether you want to say hi, ask something, or just chat — I'm always happy to connect! 😊</p>
+
+      <div class="con-card">
+        <div class="con-card-icon">📧</div>
+        <div class="con-card-info">
+          <p class="con-card-label">Email</p>
+          <p class="con-card-value">aliffkhairani2006@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="con-card">
+        <div class="con-card-icon">📱</div>
+        <div class="con-card-info">
+          <p class="con-card-label">Phone</p>
+          <p class="con-card-value">013-517-1099</p>
+        </div>
+      </div>
+
+
+      <div class="con-card">
+        <div class="con-card-icon">📱</div>
+        <div class="con-card-info">
+          <p class="con-card-label">Instagram</p>
+          <p class="con-card-value">yumzz_.06</p>
+        </div>
+      </div>
+
+
+      <div class="con-card">
+        <div class="con-card-icon">📍</div>
+        <div class="con-card-info">
+          <p class="con-card-label">Location</p>
+          <p class="con-card-value">Masai, Johor, Malaysia</p>
+        </div>
+      </div>
+
+      <div class="con-card">
+        <div class="con-card-icon">🎓</div>
+        <div class="con-card-info">
+          <p class="con-card-label">University</p>
+          <p class="con-card-value">UiTM Merbok, Kedah</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — Contact Form -->
+    <div class="con-right slide-right">
+      <p class="con-label">SEND A MESSAGE</p>
+      <h2 class="con-heading">Drop Me<span class="highlight"> A Line</span></h2>
+      <div class="con-line"></div>
+      <div class="con-form">
+        <div class="con-field">
+          <label>Your Name</label>
+          <input type="text" placeholder="e.g. Aliff" />
+        </div>
+        <div class="con-field">
+          <label>Email Address</label>
+          <input type="email" placeholder="e.g. hello@email.com" />
+        </div>
+        <div class="con-field">
+          <label>Subject</label>
+          <input type="text" placeholder="What's this about?" />
+        </div>
+        <div class="con-field">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Say something nice..."></textarea>
+        </div>
+        <button class="con-submit" onclick="sendMessage()">Send Message</button>
+        <div class="con-note" id="con-thanks" style="display:none;">
+          ✓ Thanks! I'll get back to you soon 😊
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Quote Strip -->
+  <div class="con-quote-strip fade-in">
+    <p>"The best way to connect is to just say hello." — Yumezz</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2026 YUMEZZ (AKA ALIFF) — Made with ❤️</p>
+  </div>
+
+ <!-- Music Player -->
+<div class="music-player">
+  <span></span>
+  <audio id="myMusic" loop autoplay>
+    <source src="music/music.mp3" type="audio/mpeg">
+  </audio>
+  <button onclick="playPause()">⏸ Pause</button>
+</div>
+
+<script>
+  // Try to autoplay on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    var music = document.getElementById("myMusic");
+    var btn = document.querySelector(".music-player button");
+
+    music.play().then(() => {
+      btn.textContent = "⏸ Pause";
+    }).catch(() => {
+      // Autoplay was blocked by browser — wait for user interaction
+      btn.textContent = "▶ Play";
+    });
+  });
+
+
+  function sendMessage() {
+    var thanks = document.getElementById("con-thanks");
+    thanks.style.display = "block";
+    setTimeout(function() { thanks.style.display = "none"; }, 4000);
+  }
+</script>
+
+
+
+  <script>
+    // ---- SCROLL TRANSITION OBSERVER ----
+    function initObserver() {
+      var elements = document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in, .zoom-in');
+      
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      elements.forEach(function(el) {
+        observer.observe(el);
+      });
+    }
+
+    // Small delay so CSS has time to set opacity:0 first
+    setTimeout(initObserver, 100);
+
+    // ---- PAGE TRANSITION ON CLICK ----
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('javascript')) {
+          e.preventDefault();
+          document.body.classList.add('page-transition-out');
+          setTimeout(function() { window.location.href = href; }, 280);
+        }
+      });
+    });
+  </script>
+  <script>
+    var nav = document.getElementById("nav");
+    window.addEventListener("scroll", function() {
+      nav.classList.toggle("scrolled", window.scrollY > 60);
+    });
+  </script>
+
+  <script>
+    // ── PERSISTENT MUSIC — continues across page navigation ──
+    (function() {
+      var music = document.getElementById('myMusic');
+      var btn   = document.querySelector('.music-player button');
+
+      // Restore saved playback position
+      var saved = parseFloat(localStorage.getItem('musicTime') || '0');
+      var wasPaused = localStorage.getItem('musicPaused') === 'true';
+
+      music.currentTime = saved;
+
+      if (!wasPaused) {
+        music.play().then(function() {
+          btn.textContent = '⏸ Pause';
+        }).catch(function() {
+          btn.textContent = '▶ Play';
+        });
+      } else {
+        btn.textContent = '▶ Play';
+      }
+
+      // Save position every second
+      setInterval(function() {
+        if (!music.paused) {
+          localStorage.setItem('musicTime', music.currentTime);
+        }
+      }, 1000);
+
+      // Save position right before leaving the page
+      window.addEventListener('beforeunload', function() {
+        localStorage.setItem('musicTime', music.currentTime);
+        localStorage.setItem('musicPaused', music.paused ? 'true' : 'false');
+      });
+
+      // Global toggle function
+      window.playPause = function() {
+        if (music.paused) {
+          music.play();
+          btn.textContent = '⏸ Pause';
+          localStorage.setItem('musicPaused', 'false');
+        } else {
+          music.pause();
+          btn.textContent = '▶ Play';
+          localStorage.setItem('musicPaused', 'true');
+        }
+      };
+    })();
+  </script>
+</body>
+</html>

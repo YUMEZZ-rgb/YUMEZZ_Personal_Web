@@ -1,0 +1,395 @@
+/* ================================
+   CONTACT PAGE — BLACK & PURPLE THEME
+   ================================ */
+
+:root {
+  --purple: #9b5de5;
+  --purple-light: #bf8aff;
+  --purple-border: rgba(155, 93, 229, 0.25);
+  --bg-base: #06060a;
+  --bg-card: #0d0d14;
+  --bg-card2: #111118;
+  --border: #1a1428;
+  --text: #f0eeff;
+  --muted: #6b6080;
+}
+
+/* ---- HERO ---- */
+.con-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.con-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('photo1.jpg');
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.35) saturate(0.5);
+  animation: slowzoom 14s ease-in-out infinite alternate;
+}
+
+@keyframes slowzoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.con-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(6,6,10,0.92) 0%,
+    rgba(30,8,60,0.70) 50%,
+    rgba(6,6,10,0.88) 100%
+  );
+}
+
+.con-hero-overlay::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(155,93,229,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.con-hero-fade {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 160px;
+  background: linear-gradient(to top, var(--bg-base), transparent);
+  z-index: 2;
+}
+
+.con-hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.con-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--purple-light);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.con-hero-content h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px;
+  font-weight: normal;
+  color: var(--text);
+  letter-spacing: 4px;
+  line-height: 0.9;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.con-hero-content h1 .highlight {
+  color: var(--purple);
+  text-shadow: 0 0 60px rgba(155,93,229,0.5);
+  display: block;
+}
+
+.con-hero-sub {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 3px;
+}
+
+/* ---- MAIN WRAPPER ---- */
+.con-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  max-width: 1200px;
+  margin: 0 auto 1px;
+}
+
+/* ---- LEFT PANEL ---- */
+.con-left {
+  background: var(--bg-card);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.con-left::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(155,93,229,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---- RIGHT PANEL ---- */
+.con-right {
+  background: var(--bg-base);
+  padding: 80px 60px;
+}
+
+/* ---- SHARED LABELS ---- */
+.con-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--purple);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.con-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  font-weight: normal;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  line-height: 0.95;
+}
+
+.con-heading .highlight { color: var(--purple); }
+
+.con-line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(to right, var(--purple), var(--purple-light));
+  margin-bottom: 24px;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(155,93,229,0.5);
+}
+
+.con-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.95;
+  margin-bottom: 36px;
+}
+
+/* ---- INFO CARDS ---- */
+.con-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.con-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 0;
+  background: linear-gradient(to bottom, var(--purple), var(--purple-light));
+  transition: height 0.35s ease;
+}
+
+.con-card:hover::before { height: 100%; }
+
+.con-card:hover {
+  border-color: var(--purple-border);
+  box-shadow: 0 8px 32px rgba(155,93,229,0.10);
+  transform: translateX(4px);
+}
+
+.con-card-icon {
+  font-size: 24px;
+  min-width: 36px;
+  text-align: center;
+}
+
+.con-card-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.con-card-value {
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ---- SOCIAL BUTTONS ---- */
+.con-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.con-social-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.con-social-btn:hover { border-color: var(--purple); color: var(--purple-light); }
+
+/* ---- FORM ---- */
+.con-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.con-field { display: flex; flex-direction: column; gap: 8px; }
+
+.con-field label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.con-field input,
+.con-field textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'DM Sans', Arial, sans-serif;
+  outline: none;
+  resize: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.con-field input:focus,
+.con-field textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(155,93,229,0.10);
+}
+
+.con-field input::placeholder,
+.con-field textarea::placeholder { color: var(--border); }
+
+/* ---- SUBMIT BUTTON ---- */
+.con-submit {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'DM Sans', Arial, sans-serif;
+  transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+  align-self: flex-start;
+}
+
+.con-submit:hover {
+  background: var(--purple-light);
+  box-shadow: 0 8px 32px rgba(155,93,229,0.35);
+  transform: translateY(-2px);
+}
+
+/* ---- THANK YOU NOTE ---- */
+.con-note {
+  font-size: 13px;
+  color: var(--purple-light);
+  padding: 12px 16px;
+  border: 1px solid var(--purple-border);
+  background: rgba(155,93,229,0.06);
+  border-radius: 2px;
+}
+
+/* ---- QUOTE STRIP ---- */
+.con-quote-strip {
+  background: var(--purple);
+  color: #fff;
+  text-align: center;
+  padding: 24px 40px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.con-quote-strip::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 200px;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 40px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- MUSIC PLAYER ---- */
+.music-player {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(6,6,10,0.95);
+  border: 1px solid rgba(155,93,229,0.35);
+  padding: 12px 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  backdrop-filter: blur(12px);
+}
+
+.music-player span { color: var(--purple); }
+
+.music-player button {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.music-player button:hover { background: var(--purple-light); }
