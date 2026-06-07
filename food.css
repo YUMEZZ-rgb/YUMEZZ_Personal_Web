@@ -1,0 +1,265 @@
+/* ================================
+   FOOD PAGE — BLACK & PURPLE THEME
+   ================================ */
+
+:root {
+  --purple: #9b5de5;
+  --purple-light: #bf8aff;
+  --purple-border: rgba(155, 93, 229, 0.25);
+  --bg-base: #06060a;
+  --bg-card: #0d0d14;
+  --bg-card2: #111118;
+  --border: #1a1428;
+  --text: #f0eeff;
+  --muted: #6b6080;
+}
+
+/* ---- PAGE HERO HEADER ---- */
+.food-header {
+  position: relative;
+  text-align: center;
+  padding: 140px 40px 80px;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+.food-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--purple));
+}
+
+.food-header::after {
+  content: '';
+  position: absolute;
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(155,93,229,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.food-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--purple-light);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.food-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  font-weight: normal;
+  line-height: 0.92;
+  letter-spacing: 4px;
+  color: var(--text);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.food-title .highlight {
+  color: var(--purple);
+  display: block;
+  text-shadow: 0 0 60px rgba(155,93,229,0.4);
+}
+
+.food-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- MENU BOARD ---- */
+.menu-board {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+/* ---- CATEGORY BLOCK ---- */
+.menu-category {
+  margin-bottom: 80px;
+}
+
+.menu-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 48px 0 16px;
+}
+
+.menu-category-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 8px;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.menu-category-icon { font-size: 20px; }
+
+.menu-category-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--purple-border), transparent);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+/* glowing centre dot on line */
+.menu-category-line::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+  box-shadow: 0 0 10px rgba(155,93,229,0.8);
+}
+
+/* ---- MENU ITEM ROW ---- */
+.menu-item-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 0;
+  background: linear-gradient(to bottom, var(--purple), var(--purple-light));
+  transition: height 0.4s ease;
+}
+
+.menu-item-row:hover::before { height: 100%; }
+.menu-item-row:hover { background: rgba(155,93,229,0.03); }
+
+.menu-item-row.reverse { flex-direction: row-reverse; }
+
+.menu-item-row.reverse::before {
+  left: auto; right: 0;
+}
+
+/* ---- PHOTO ---- */
+.menu-item-photo { min-width: 200px; }
+
+.menu-item-photo img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--purple-border);
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.4s, box-shadow 0.4s, transform 0.4s;
+}
+
+.menu-item-row:hover .menu-item-photo img {
+  filter: grayscale(0%);
+  box-shadow: 0 0 32px rgba(155,93,229,0.25);
+  transform: scale(1.02);
+}
+
+/* ---- TEXT INFO ---- */
+.menu-item-info { flex: 1; padding-left: 8px; }
+
+.menu-item-info h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.menu-item-info p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+/* ---- TAG BADGE ---- */
+.menu-tag {
+  display: inline-block;
+  background: rgba(155,93,229,0.08);
+  border: 1px solid var(--purple-border);
+  color: var(--purple-light);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  padding: 5px 14px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- DOT DIVIDER ---- */
+.menu-divider {
+  display: none; /* replaced by border-bottom on rows */
+}
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 40px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- MUSIC PLAYER ---- */
+.music-player {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(6,6,10,0.95);
+  border: 1px solid rgba(155,93,229,0.35);
+  padding: 12px 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  backdrop-filter: blur(12px);
+}
+
+.music-player span { color: var(--purple); }
+
+.music-player button {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.music-player button:hover { background: var(--purple-light); }
