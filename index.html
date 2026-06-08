@@ -35,7 +35,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -69,7 +69,7 @@
     }
     .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative;
       height: 100vh;
@@ -78,16 +78,34 @@
       align-items: flex-end;
       overflow: hidden;
     }
-    .hero-video {
+
+    /* YouTube iframe as hero background */
+    .hero-video-bg {
       position: absolute;
       inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.45);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
     }
+    .hero-video-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.78vh;
+      height: 56.25vw;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      filter: brightness(0.45);
+      border: none;
+    }
+
     .hero-gradient {
       position: absolute;
       inset: 0;
+      z-index: 1;
       background: linear-gradient(
         to bottom,
         rgba(8,8,7,0.2) 0%,
@@ -186,7 +204,7 @@
       animation: scrollLine 1.5s 1.5s ease-in-out infinite;
     }
 
-    /* ─── TICKER ─── */
+    /* TICKER */
     .ticker {
       background: var(--gold);
       overflow: hidden;
@@ -206,7 +224,7 @@
       padding: 0 32px;
     }
 
-    /* ─── STATS ─── */
+    /* STATS */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -234,7 +252,7 @@
       margin-top: 8px;
     }
 
-    /* ─── WHO AM I ─── */
+    /* WHO AM I */
     .who {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -294,7 +312,7 @@
       pointer-events: none;
     }
 
-    /* ─── VIDEO FEATURE ─── */
+    /* VIDEO FEATURE */
     .video-feature {
       position: relative;
       background: var(--dark);
@@ -316,22 +334,33 @@
     .video-feature .section-label { text-align: center; }
     .video-feature .section-title { margin: 0 auto 16px; }
     .video-feature p { color: var(--muted); font-size: 15px; margin-bottom: 48px; }
+
+    /* YouTube embed — 16:9 responsive */
     .video-wrapper {
       position: relative;
       max-width: 900px;
       margin: 0 auto;
       border: 1px solid rgba(155,93,229,0.3);
+      aspect-ratio: 16 / 9;
     }
-    .video-wrapper video { width: 100%; display: block; }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
     .video-wrapper::before {
       content: '';
       position: absolute;
       inset: -1px;
       border: 1px solid rgba(155,93,229,0.15);
       pointer-events: none;
+      z-index: 1;
     }
 
-    /* ─── EXPLORE GRID ─── */
+    /* EXPLORE GRID */
     .explore {
       padding: 120px 48px;
       background: var(--dark2);
@@ -372,10 +401,7 @@
     }
     .explore-card:hover { background: var(--dark3); }
     .explore-card:hover::after { opacity: 1; transform: translateX(0); }
-    .explore-icon {
-      font-size: 32px;
-      line-height: 1;
-    }
+    .explore-icon { font-size: 32px; line-height: 1; }
     .explore-name {
       font-family: var(--font-display);
       font-size: 40px;
@@ -398,7 +424,7 @@
     }
     .explore-card:hover .explore-line { width: 64px; }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     .footer {
       padding: 64px 48px;
       background: var(--dark);
@@ -430,7 +456,7 @@
     }
     .footer-links a:hover { color: var(--gold); }
 
-    /* ─── MUSIC PLAYER ─── */
+    /* MUSIC PLAYER */
     .music-player {
       position: fixed;
       bottom: 24px;
@@ -459,10 +485,12 @@
       font-family: var(--font-body);
       font-weight: 500;
       transition: background 0.2s;
+      border: none;
+      padding: 6px 12px;
     }
     .music-player button:hover { background: var(--gold-light); }
 
-    /* ─── ANIMATIONS ─── */
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -481,10 +509,7 @@
       transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
@@ -513,9 +538,15 @@
 
   <!-- HERO -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="video/dailylife.mp4" type="video/mp4">
-    </video>
+    <!-- YouTube as muted autoplay background -->
+    <div class="hero-video-bg">
+      <iframe
+        src="https://www.youtube.com/embed/c7oZbhs__hU?autoplay=1&mute=1&loop=1&playlist=c7oZbhs__hU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+        title="Hero background video"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
     <div class="hero-gradient"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Welcome to my personal website</p>
@@ -603,10 +634,14 @@
       This is Me in<br><em style="color:var(--gold)">Semester One</em>
     </h2>
     <p class="reveal">A little glimpse into my daily life as a student 🎬</p>
+    <!-- YouTube embed with controls -->
     <div class="video-wrapper reveal">
-      <video controls>
-        <source src="video/dailylife.mp4" type="video/mp4">
-      </video>
+      <iframe
+        src="https://www.youtube.com/embed/c7oZbhs__hU?rel=0&modestbranding=1&showinfo=0"
+        title="Aliff's Semester One Daily Life"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
   </section>
 
@@ -679,13 +714,11 @@
   </div>
 
   <script>
-    // Nav scroll effect
     var nav = document.getElementById('nav');
     window.addEventListener('scroll', function() {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Music
     window.addEventListener('DOMContentLoaded', function() {
       var music = document.getElementById('myMusic');
       var btn = document.querySelector('.music-player button');
@@ -698,13 +731,11 @@
       else { music.pause(); btn.textContent = '▶ Play'; }
     }
 
-    // Scroll reveal
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
 
-    // Page transitions
     document.querySelectorAll('a[href]').forEach(function(link) {
       link.addEventListener('click', function(e) {
         var href = link.getAttribute('href');
@@ -719,12 +750,10 @@
   </script>
 
   <script>
-    // ── PERSISTENT MUSIC — continues across page navigation ──
     (function() {
       var music = document.getElementById('myMusic');
       var btn   = document.querySelector('.music-player button');
 
-      // Restore saved playback position
       var saved = parseFloat(localStorage.getItem('musicTime') || '0');
       var wasPaused = localStorage.getItem('musicPaused') === 'true';
 
@@ -740,20 +769,15 @@
         btn.textContent = '▶ Play';
       }
 
-      // Save position every second
       setInterval(function() {
-        if (!music.paused) {
-          localStorage.setItem('musicTime', music.currentTime);
-        }
+        if (!music.paused) { localStorage.setItem('musicTime', music.currentTime); }
       }, 1000);
 
-      // Save position right before leaving the page
       window.addEventListener('beforeunload', function() {
         localStorage.setItem('musicTime', music.currentTime);
         localStorage.setItem('musicPaused', music.paused ? 'true' : 'false');
       });
 
-      // Global toggle function
       window.playPause = function() {
         if (music.paused) {
           music.play();
