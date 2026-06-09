@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,18 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="transitions.css">
 
+  <!-- Theme applied before paint to avoid flash -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* ── DARK THEME (default) ── */
     :root {
       --gold: #9b5de5;
       --gold-light: #bf8aff;
@@ -21,8 +30,19 @@
       --dark3: #13131e;
       --white: #f0eeff;
       --muted: rgba(200,190,255,0.5);
+      --nav-bg-scrolled: rgba(8,8,7,0.97);
       --font-display: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
+    }
+
+    /* ── LIGHT THEME ── */
+    [data-theme="light"] {
+      --dark: #f4f2ff;
+      --dark2: #eae6ff;
+      --dark3: #ddd8ff;
+      --white: #1a1030;
+      --muted: rgba(80,60,120,0.65);
+      --nav-bg-scrolled: rgba(244,242,255,0.97);
     }
 
     html { scroll-behavior: smooth; }
@@ -33,9 +53,22 @@
       font-family: var(--font-body);
       font-weight: 300;
       overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
-    /* NAV */
+    /* ── READING PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      z-index: 9999;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(155,93,229,0.7);
+    }
+
+    /* ── NAV ── */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -45,9 +78,12 @@
       justify-content: space-between;
       padding: 24px 48px;
       background: linear-gradient(to bottom, rgba(8,8,7,0.9) 0%, transparent 100%);
-      transition: background 0.3s;
+      transition: background 0.3s, padding 0.3s;
     }
-    .nav.scrolled { background: rgba(8,8,7,0.97); padding: 16px 48px; }
+    [data-theme="light"] .nav {
+      background: linear-gradient(to bottom, rgba(244,242,255,0.9) 0%, transparent 100%);
+    }
+    .nav.scrolled { background: var(--nav-bg-scrolled); padding: 16px 48px; }
     .nav-logo {
       font-family: var(--font-display);
       font-size: 28px;
@@ -56,7 +92,7 @@
       text-decoration: none;
     }
     .nav-logo img { height: 36px; filter: brightness(0) invert(1); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-links a {
       color: var(--white);
       text-decoration: none;
@@ -69,7 +105,29 @@
     }
     .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold); }
 
-    /* HERO */
+    /* ── THEME TOGGLE BUTTON ── */
+    .theme-toggle {
+      background: none;
+      border: 1px solid rgba(155,93,229,0.4);
+      color: var(--white);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.3s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      background: rgba(155,93,229,0.15);
+      border-color: var(--gold);
+      transform: rotate(20deg);
+    }
+
+    /* ── HERO ── */
     .hero {
       position: relative;
       height: 100vh;
@@ -78,21 +136,17 @@
       align-items: flex-end;
       overflow: hidden;
     }
-
-    /* YouTube iframe as hero background */
     .hero-video-bg {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       pointer-events: none;
       overflow: hidden;
       z-index: 0;
     }
     .hero-video-bg iframe {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       width: 177.78vh;
       height: 56.25vw;
       min-width: 100%;
@@ -101,7 +155,6 @@
       filter: brightness(0.45);
       border: none;
     }
-
     .hero-gradient {
       position: absolute;
       inset: 0;
@@ -112,6 +165,15 @@
         transparent 40%,
         rgba(8,8,7,0.6) 70%,
         rgba(8,8,7,1) 100%
+      );
+    }
+    [data-theme="light"] .hero-gradient {
+      background: linear-gradient(
+        to bottom,
+        rgba(244,242,255,0.15) 0%,
+        transparent 40%,
+        rgba(244,242,255,0.7) 70%,
+        rgba(244,242,255,1) 100%
       );
     }
     .hero-content {
@@ -139,6 +201,8 @@
       animation: fadeUp 0.8s 0.5s forwards;
     }
     .hero-title span { color: var(--gold); display: block; }
+
+    /* Typing animation container */
     .hero-sub {
       font-size: 14px;
       letter-spacing: 3px;
@@ -147,7 +211,23 @@
       margin: 24px 0 40px;
       opacity: 0;
       animation: fadeUp 0.8s 0.7s forwards;
+      min-height: 20px;
     }
+    /* Blinking cursor after typed text */
+    .hero-sub .typed-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-left: 3px;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     .hero-buttons {
       display: flex;
       gap: 16px;
@@ -184,8 +264,7 @@
 
     .hero-scroll {
       position: absolute;
-      bottom: 32px;
-      right: 48px;
+      bottom: 32px; right: 48px;
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -204,15 +283,10 @@
       animation: scrollLine 1.5s 1.5s ease-in-out infinite;
     }
 
-    /* TICKER */
-    .ticker {
-      background: var(--gold);
-      overflow: hidden;
-      padding: 12px 0;
-    }
+    /* ── TICKER ── */
+    .ticker { background: var(--gold); overflow: hidden; padding: 12px 0; }
     .ticker-track {
-      display: flex;
-      gap: 0;
+      display: flex; gap: 0;
       white-space: nowrap;
       animation: ticker 20s linear infinite;
     }
@@ -224,15 +298,17 @@
       padding: 0 32px;
     }
 
-    /* STATS */
+    /* ── STATS ── */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      border-bottom: 1px solid rgba(245,242,234,0.08);
+      border-bottom: 1px solid rgba(155,93,229,0.12);
+      background: var(--dark2);
+      transition: background 0.4s;
     }
     .stat-item {
       padding: 48px 32px;
-      border-right: 1px solid rgba(245,242,234,0.08);
+      border-right: 1px solid rgba(155,93,229,0.12);
       text-align: center;
     }
     .stat-item:last-child { border-right: none; }
@@ -252,7 +328,7 @@
       margin-top: 8px;
     }
 
-    /* WHO AM I */
+    /* ── WHO AM I ── */
     .who {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -264,6 +340,7 @@
       flex-direction: column;
       justify-content: center;
       background: var(--dark2);
+      transition: background 0.4s;
     }
     .section-label {
       font-size: 10px;
@@ -280,11 +357,7 @@
       color: var(--white);
       margin-bottom: 32px;
     }
-    .section-title em {
-      color: var(--gold);
-      font-style: normal;
-      display: block;
-    }
+    .section-title em { color: var(--gold); font-style: normal; display: block; }
     .section-body {
       font-size: 16px;
       line-height: 1.8;
@@ -292,50 +365,41 @@
       max-width: 480px;
       margin-bottom: 48px;
     }
-    .who-photo {
-      position: relative;
-      overflow: hidden;
-      background: var(--dark3);
-    }
+    .who-photo { position: relative; overflow: hidden; background: var(--dark3); transition: background 0.4s; }
     .who-photo img {
       width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: top;
+      object-fit: cover; object-position: top;
       filter: grayscale(30%);
       transition: filter 0.4s;
     }
     .who-photo:hover img { filter: grayscale(0%); }
     .who-photo-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(155,93,229,0.2) 0%, transparent 60%);
       pointer-events: none;
     }
 
-    /* VIDEO FEATURE */
+    /* ── VIDEO FEATURE ── */
     .video-feature {
       position: relative;
       background: var(--dark);
       padding: 120px 48px;
       text-align: center;
       overflow: hidden;
+      transition: background 0.4s;
     }
     .video-feature::before {
       content: '';
       position: absolute;
-      top: -200px;
-      left: 50%;
+      top: -200px; left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(155,93,229,0.1) 0%, transparent 70%);
       pointer-events: none;
     }
     .video-feature .section-label { text-align: center; }
     .video-feature .section-title { margin: 0 auto 16px; }
     .video-feature p { color: var(--muted); font-size: 15px; margin-bottom: 48px; }
-
-    /* YouTube embed — 16:9 responsive */
     .video-wrapper {
       position: relative;
       max-width: 900px;
@@ -344,160 +408,119 @@
       aspect-ratio: 16 / 9;
     }
     .video-wrapper iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none; display: block;
     }
     .video-wrapper::before {
       content: '';
-      position: absolute;
-      inset: -1px;
+      position: absolute; inset: -1px;
       border: 1px solid rgba(155,93,229,0.15);
-      pointer-events: none;
-      z-index: 1;
+      pointer-events: none; z-index: 1;
     }
 
-    /* EXPLORE GRID */
-    .explore {
-      padding: 120px 48px;
-      background: var(--dark2);
-    }
-    .explore-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 64px;
-    }
+    /* ── EXPLORE GRID ── */
+    .explore { padding: 120px 48px; background: var(--dark2); transition: background 0.4s; }
+    .explore-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 64px; }
     .explore-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: rgba(245,242,234,0.08);
+      background: rgba(155,93,229,0.1);
     }
     .explore-card {
       background: var(--dark2);
       padding: 56px 40px;
       text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      display: flex; flex-direction: column; gap: 16px;
       transition: background 0.25s;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .explore-card::after {
       content: '→';
-      position: absolute;
-      top: 40px;
-      right: 40px;
-      font-size: 20px;
-      color: var(--gold);
-      opacity: 0;
-      transform: translateX(-8px);
+      position: absolute; top: 40px; right: 40px;
+      font-size: 20px; color: var(--gold);
+      opacity: 0; transform: translateX(-8px);
       transition: opacity 0.25s, transform 0.25s;
     }
     .explore-card:hover { background: var(--dark3); }
     .explore-card:hover::after { opacity: 1; transform: translateX(0); }
     .explore-icon { font-size: 32px; line-height: 1; }
-    .explore-name {
-      font-family: var(--font-display);
-      font-size: 40px;
-      letter-spacing: 1px;
-      color: var(--white);
-      line-height: 1;
-    }
-    .explore-desc {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .explore-line {
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-      margin-top: 8px;
-      transition: width 0.25s;
-    }
+    .explore-name { font-family: var(--font-display); font-size: 40px; letter-spacing: 1px; color: var(--white); line-height: 1; }
+    .explore-desc { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .explore-line { width: 32px; height: 1px; background: var(--gold); margin-top: 8px; transition: width 0.25s; }
     .explore-card:hover .explore-line { width: 64px; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     .footer {
       padding: 64px 48px;
       background: var(--dark);
-      border-top: 1px solid rgba(245,242,234,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      border-top: 1px solid rgba(155,93,229,0.12);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s;
     }
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 32px;
-      letter-spacing: 4px;
-      color: var(--gold);
-    }
-    .footer-copy {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
+    .footer-logo { font-family: var(--font-display); font-size: 32px; letter-spacing: 4px; color: var(--gold); }
+    .footer-copy { font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .footer-links a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
 
-    /* MUSIC PLAYER */
+    /* ── MUSIC PLAYER ── */
     .music-player {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 24px; right: 24px;
       z-index: 200;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
       background: rgba(8,8,7,0.95);
       border: 1px solid rgba(155,93,229,0.4);
       padding: 12px 20px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
       color: var(--muted);
       backdrop-filter: blur(12px);
+      transition: background 0.4s;
     }
+    [data-theme="light"] .music-player { background: rgba(244,242,255,0.95); }
     .music-player span { color: var(--gold); }
     .music-player button {
-      background: var(--gold);
-      color: #fff;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-weight: 500;
-      transition: background 0.2s;
-      border: none;
-      padding: 6px 12px;
+      background: var(--gold); color: #fff;
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; font-family: var(--font-body); font-weight: 500;
+      transition: background 0.2s; border: none; padding: 6px 12px;
     }
     .music-player button:hover { background: var(--gold-light); }
 
-    /* ANIMATIONS */
+    /* ── BACK TO TOP BUTTON ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 84px; right: 24px;
+      z-index: 200;
+      width: 44px; height: 44px;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      pointer-events: none;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    #back-to-top:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes scrollLine {
       0%, 100% { transform: scaleY(1); transform-origin: top; }
-      50% { transform: scaleY(0.4); transform-origin: top; }
+      50%       { transform: scaleY(0.4); transform-origin: top; }
     }
     @keyframes ticker {
       from { transform: translateX(0); }
@@ -505,8 +528,7 @@
     }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(40px);
+      opacity: 0; transform: translateY(40px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -518,6 +540,12 @@
   </style>
 </head>
 <body>
+
+  <!-- READING PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" title="Back to top">↑</button>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -533,12 +561,15 @@
       <li><a href="education.html">Education</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <!-- THEME TOGGLE -->
+      <li>
+        <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
+      </li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <!-- YouTube as muted autoplay background -->
     <div class="hero-video-bg">
       <iframe
         src="https://www.youtube.com/embed/c7oZbhs__hU?autoplay=1&mute=1&loop=1&playlist=c7oZbhs__hU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
@@ -554,7 +585,8 @@
         YUMEZZ
         <span>AKA ALIFF</span>
       </h1>
-      <p class="hero-sub">Gundam Lover &nbsp;·&nbsp; Music Fan &nbsp;·&nbsp; Simple Person</p>
+      <!-- Typing animation target -->
+      <p class="hero-sub"><span id="typed-text"></span><span class="typed-cursor"></span></p>
       <div class="hero-buttons">
         <a href="about.html" class="btn-gold">About Me</a>
         <a href="contact.html" class="btn-outline-white">Say Hello</a>
@@ -634,7 +666,6 @@
       This is Me in<br><em style="color:var(--gold)">Semester One</em>
     </h2>
     <p class="reveal">A little glimpse into my daily life as a student 🎬</p>
-    <!-- YouTube embed with controls -->
     <div class="video-wrapper reveal">
       <iframe
         src="https://www.youtube.com/embed/c7oZbhs__hU?rel=0&modestbranding=1&showinfo=0"
@@ -714,28 +745,146 @@
   </div>
 
   <script>
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function() {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
+    /* ══════════════════════════════════════
+       1. LIGHT / DARK MODE
+    ══════════════════════════════════════ */
+    var html        = document.documentElement;
+    var toggleBtn   = document.getElementById('themeToggle');
 
-    window.addEventListener('DOMContentLoaded', function() {
-      var music = document.getElementById('myMusic');
-      var btn = document.querySelector('.music-player button');
-      music.play().then(function() { btn.textContent = '⏸ Pause'; }).catch(function() { btn.textContent = '▶ Play'; });
-    });
-    function playPause() {
-      var music = document.getElementById('myMusic');
-      var btn = document.querySelector('.music-player button');
-      if (music.paused) { music.play(); btn.textContent = '⏸ Pause'; }
-      else { music.pause(); btn.textContent = '▶ Play'; }
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      toggleBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('theme', theme);
     }
 
+    // Restore saved theme (already set in <head> to avoid flash, but sync the button)
+    applyTheme(localStorage.getItem('theme') || 'dark');
+
+    toggleBtn.addEventListener('click', function() {
+      var current = html.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+
+    /* ══════════════════════════════════════
+       3. TYPING ANIMATION
+    ══════════════════════════════════════ */
+    var phrases = [
+      'Gundam Lover',
+      'Music Fan',
+      'Simple Person',
+      'UiTM Student',
+      'Food Enthusiast'
+    ];
+    var typedEl    = document.getElementById('typed-text');
+    var pIdx       = 0;   // current phrase index
+    var cIdx       = 0;   // current character index
+    var deleting   = false;
+    var typeSpeed  = 90;
+    var deleteSpeed = 50;
+    var pauseAfter = 1600; // ms pause at end of word
+
+    function typeLoop() {
+      var current = phrases[pIdx];
+
+      if (!deleting) {
+        // Type forward
+        typedEl.textContent = current.substring(0, cIdx + 1);
+        cIdx++;
+        if (cIdx === current.length) {
+          // Finished typing — pause then delete
+          deleting = true;
+          setTimeout(typeLoop, pauseAfter);
+          return;
+        }
+        setTimeout(typeLoop, typeSpeed);
+      } else {
+        // Delete backward
+        typedEl.textContent = current.substring(0, cIdx - 1);
+        cIdx--;
+        if (cIdx === 0) {
+          // Finished deleting — move to next phrase
+          deleting = false;
+          pIdx = (pIdx + 1) % phrases.length;
+          setTimeout(typeLoop, 300);
+          return;
+        }
+        setTimeout(typeLoop, deleteSpeed);
+      }
+    }
+
+    // Start typing after hero animations settle
+    setTimeout(typeLoop, 1200);
+
+
+    /* ══════════════════════════════════════
+       5. READING PROGRESS BAR
+    ══════════════════════════════════════ */
+    var progressBar = document.getElementById('progress-bar');
+
+    function updateProgress() {
+      var scrollTop    = window.scrollY;
+      var docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+      var pct          = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+
+
+    /* ══════════════════════════════════════
+       6. BACK TO TOP BUTTON
+    ══════════════════════════════════════ */
+    var backBtn = document.getElementById('back-to-top');
+
+    backBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+
+    /* ══════════════════════════════════════
+       SHARED SCROLL HANDLER
+       (nav + progress + back-to-top)
+    ══════════════════════════════════════ */
+    var nav = document.getElementById('nav');
+
+    window.addEventListener('scroll', function() {
+      // Nav shrink
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+      // Progress bar
+      updateProgress();
+      // Back to top visibility (show after 400px)
+      backBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+
+    /* ══════════════════════════════════════
+       MUSIC
+    ══════════════════════════════════════ */
+    window.addEventListener('DOMContentLoaded', function() {
+      var music = document.getElementById('myMusic');
+      var btn   = document.querySelector('.music-player button');
+      music.play().then(function() { btn.textContent = '⏸ Pause'; }).catch(function() { btn.textContent = '▶ Play'; });
+    });
+
+    function playPause() {
+      var music = document.getElementById('myMusic');
+      var btn   = document.querySelector('.music-player button');
+      if (music.paused) { music.play(); btn.textContent = '⏸ Pause'; }
+      else              { music.pause(); btn.textContent = '▶ Play'; }
+    }
+
+
+    /* ══════════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════════ */
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
 
+
+    /* ══════════════════════════════════════
+       PAGE TRANSITIONS
+    ══════════════════════════════════════ */
     document.querySelectorAll('a[href]').forEach(function(link) {
       link.addEventListener('click', function(e) {
         var href = link.getAttribute('href');
@@ -750,27 +899,25 @@
   </script>
 
   <script>
+    /* ══════════════════════════════════════
+       PERSISTENT MUSIC
+    ══════════════════════════════════════ */
     (function() {
-      var music = document.getElementById('myMusic');
-      var btn   = document.querySelector('.music-player button');
-
-      var saved = parseFloat(localStorage.getItem('musicTime') || '0');
+      var music    = document.getElementById('myMusic');
+      var btn      = document.querySelector('.music-player button');
+      var saved    = parseFloat(localStorage.getItem('musicTime') || '0');
       var wasPaused = localStorage.getItem('musicPaused') === 'true';
 
       music.currentTime = saved;
 
       if (!wasPaused) {
-        music.play().then(function() {
-          btn.textContent = '⏸ Pause';
-        }).catch(function() {
-          btn.textContent = '▶ Play';
-        });
+        music.play().then(function() { btn.textContent = '⏸ Pause'; }).catch(function() { btn.textContent = '▶ Play'; });
       } else {
         btn.textContent = '▶ Play';
       }
 
       setInterval(function() {
-        if (!music.paused) { localStorage.setItem('musicTime', music.currentTime); }
+        if (!music.paused) localStorage.setItem('musicTime', music.currentTime);
       }, 1000);
 
       window.addEventListener('beforeunload', function() {
@@ -780,12 +927,10 @@
 
       window.playPause = function() {
         if (music.paused) {
-          music.play();
-          btn.textContent = '⏸ Pause';
+          music.play(); btn.textContent = '⏸ Pause';
           localStorage.setItem('musicPaused', 'false');
         } else {
-          music.pause();
-          btn.textContent = '▶ Play';
+          music.pause(); btn.textContent = '▶ Play';
           localStorage.setItem('musicPaused', 'true');
         }
       };
