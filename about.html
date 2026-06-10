@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="dark">
 <head>
   <title>YUMEZZ - About Me</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,8 +44,106 @@
     .nav-links a:hover,
     .nav-links a.active { opacity: 1; color: #9b5de5; }
   </style>
+
+  <!-- Theme applied before paint — no flash -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <!-- Shared feature styles -->
+  <style>
+    /* READING PROGRESS BAR */
+    #progress-bar {
+      position: fixed; top: 0; left: 0;
+      width: 0%; height: 3px;
+      background: linear-gradient(to right, #9b5de5, #bf8aff);
+      z-index: 9999;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(155,93,229,0.7);
+    }
+    /* BACK TO TOP */
+    #back-to-top {
+      position: fixed; bottom: 84px; right: 24px; z-index: 200;
+      width: 44px; height: 44px;
+      background: #9b5de5; color: #fff; border: none;
+      font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      pointer-events: none;
+    }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+    #back-to-top:hover { background: #bf8aff; transform: translateY(-3px); }
+    /* THEME TOGGLE */
+    .theme-toggle {
+      background: none; border: 1px solid rgba(155,93,229,0.4);
+      width: 36px; height: 36px; border-radius: 50%;
+      cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.3s;
+      flex-shrink: 0; color: inherit;
+    }
+    .theme-toggle:hover { background: rgba(155,93,229,0.15); border-color: #9b5de5; transform: rotate(20deg); }
+    /* LIGHT MODE — body & backgrounds */
+    [data-theme="light"] body { background: #f4f2ff !important; color: #1a1030 !important; }
+    [data-theme="light"] .nav { background: linear-gradient(to bottom, rgba(244,242,255,0.95) 0%, transparent 100%) !important; }
+    [data-theme="light"] .nav.scrolled { background: rgba(244,242,255,0.98) !important; }
+    [data-theme="light"] .nav-links a { color: #1a1030 !important; }
+    [data-theme="light"] .footer { background: #eae6ff !important; color: #6b6080 !important; border-color: rgba(155,93,229,0.15) !important; }
+    [data-theme="light"] .music-player { background: rgba(234,230,255,0.97) !important; }
+    /* card/section backgrounds */
+    [data-theme="light"] .who-text,
+    [data-theme="light"] .explore,
+    [data-theme="light"] .home-stats,
+    [data-theme="light"] .quick-section { background: #eae6ff !important; }
+    [data-theme="light"] .video-feature,
+    [data-theme="light"] .stats-bar { background: #f4f2ff !important; }
+    [data-theme="light"] .explore-card { background: #eae6ff !important; }
+    [data-theme="light"] .explore-card:hover { background: #ddd8ff !important; }
+    /* education */
+    [data-theme="light"] .edu-hero-fade { background: linear-gradient(to top, #f4f2ff, transparent) !important; }
+    [data-theme="light"] .edu-intro, [data-theme="light"] .edu-timeline { color: #1a1030; }
+    [data-theme="light"] .edu-intro p, [data-theme="light"] .edu-desc { color: #5a4080 !important; }
+    [data-theme="light"] .edu-intro h2, [data-theme="light"] .edu-name { color: #1a1030 !important; }
+    [data-theme="light"] .edu-img-box { background: #eae6ff !important; border-color: rgba(155,93,229,0.3) !important; }
+    /* food */
+    [data-theme="light"] .food-header { background: #f4f2ff !important; }
+    [data-theme="light"] .menu-board { background: #f4f2ff; }
+    [data-theme="light"] .menu-item-info h3 { color: #1a1030 !important; }
+    [data-theme="light"] .menu-item-info p { color: #5a4080 !important; }
+    [data-theme="light"] .menu-item-row { border-color: rgba(155,93,229,0.15) !important; }
+    /* hobbies */
+    [data-theme="light"] .hob-header { background: #f4f2ff !important; }
+    [data-theme="light"] .hob-title { color: #1a1030 !important; }
+    [data-theme="light"] .video-section { background: #f4f2ff; }
+    /* about */
+    [data-theme="light"] .intro-text-panel { background: #eae6ff !important; }
+    [data-theme="light"] .hotel-two-col, [data-theme="light"] .hotel-highlights { background: #f4f2ff !important; }
+    [data-theme="light"] .hotel-highlight-item { background: #eae6ff !important; border-color: rgba(155,93,229,0.2) !important; }
+    [data-theme="light"] .hotel-list li { color: #5a4080 !important; }
+    [data-theme="light"] .intro-body p { color: #5a4080 !important; }
+    /* contact */
+    [data-theme="light"] .con-wrapper { background: #f4f2ff !important; }
+    [data-theme="light"] .con-card { background: #eae6ff !important; border-color: rgba(155,93,229,0.2) !important; }
+    [data-theme="light"] .con-field input, [data-theme="light"] .con-field textarea { background: #eae6ff !important; color: #1a1030 !important; border-color: rgba(155,93,229,0.3) !important; }
+    [data-theme="light"] .con-desc, [data-theme="light"] .con-card-value { color: #5a4080 !important; }
+    /* gallery */
+    [data-theme="light"] .gal-collection { background: #f4f2ff !important; }
+    [data-theme="light"] .gal-section-title { color: #1a1030 !important; }
+    /* body transition */
+    body { transition: background 0.4s ease, color 0.4s ease; }
+  </style>
 </head>
 <body class="hotel-body">
+  <!-- READING PROGRESS BAR -->
+  <div id="progress-bar"></div>
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" title="Back to top">↑</button>
+
+
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -61,7 +159,10 @@
       <li><a href="education.html">Education</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
-    </ul>
+          <li>
+        <button class="theme-toggle" id="themeToggle" title="Toggle light / dark">🌙</button>
+      </li>
+</ul>
   </nav>
 
   <!-- HERO BANNER -->
@@ -266,12 +367,7 @@
       });
     });
   </script>
-  <script>
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function() {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
-  </script>
+  
 
   <script>
     // ── PERSISTENT MUSIC — continues across page navigation ──
@@ -322,5 +418,40 @@
       };
     })();
   </script>
+
+  <script>
+    /* ── 1. LIGHT / DARK MODE ── */
+    var html = document.documentElement;
+    var toggleBtn = document.getElementById('themeToggle');
+    function applyTheme(t) {
+      html.setAttribute('data-theme', t);
+      if (toggleBtn) toggleBtn.textContent = t === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('theme', t);
+    }
+    applyTheme(localStorage.getItem('theme') || 'dark');
+    if (toggleBtn) toggleBtn.addEventListener('click', function() {
+      applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+
+    /* ── 5. READING PROGRESS BAR ── */
+    var progressBar = document.getElementById('progress-bar');
+    function updateProgress() {
+      var doc = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressBar) progressBar.style.width = (doc > 0 ? (window.scrollY / doc) * 100 : 0) + '%';
+    }
+
+    /* ── 6. BACK TO TOP ── */
+    var backBtn = document.getElementById('back-to-top');
+    if (backBtn) backBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ── SHARED SCROLL HANDLER ── */
+    var navEl = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 60);
+      updateProgress();
+      if (backBtn) backBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
+
 </body>
 </html>
